@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layout Template with Header and Columns</title>
+<style>
+  /* Resetting default margin and padding */
+  body, h1, p {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Styling the header */
+  header {
+    background-color: #333; /* Background color for the header */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 2px solid #555; /* Bottom border for the header */
+  }
+
+  /* Styling for the main content area */
+  .container {
+    width: 80%; /* Width of the container */
+    margin: 20px auto; /* Centering the container */
+    overflow: hidden; /* Clearing floats */
+  }
+
+  /* Styling for columns */
+  .column {
+    float: left; /* Float columns to the left */
+    width: 48%; /* Width of each column */
+    margin: 0 1%; /* Margin between columns */
+    padding: 20px; /* Padding inside columns */
+    border: 1px solid #ccc; /* Border for columns */
+    background-color: #f9f9f9; /* Background color for columns */
+    box-sizing: border-box; /* Include padding and border in width */
+  }
+
+  /* Clearing floats */
+  .clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Header</h1>
+</header>
+
+<div class="container clearfix">
+  <div class="column">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ullamcorper lectus auctor, fermentum enim non, fermentum libero. Donec pulvinar nulla vel nisi ultricies, nec ultricies odio dictum.</p>
+  </div>
+  <div class="column">
+    <p>Nulla facilisi. Ut imperdiet mauris at leo eleifend, ut scelerisque enim tempor. Morbi dictum, est nec fermentum bibendum, enim justo ultricies odio, nec ullamcorper arcu est at ligula.</p>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 150px;
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="button"] {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <h2>Temperature Converter</h2>
+    <label for="temperature">Enter Temperature:</label>
+    <input type="text" id="temperature" placeholder="Enter temperature...">
+    <br>
+    <input type="button" value="Convert" onclick="convertTemperature()">
+    <br><br>
+    <div id="result"></div>
+</div>
+
+<script>
+    function convertTemperature() {
+        var temperatureInput = document.getElementById("temperature").value;
+        var temperature = parseFloat(temperatureInput);
+
+        if (isNaN(temperature)) {
+            document.getElementById("result").innerHTML = "Please enter a valid temperature.";
+            return;
+        }
+
+        var result = "";
+        
+        // Convert Kelvin to Celsius and Fahrenheit
+        var celsius = temperature - 273.15;
+        var fahrenheit = (temperature - 273.15) * 9 / 5 + 32;
+        result += "Kelvin: " + temperature + " K<br>";
+        result += "Celsius: " + celsius.toFixed(2) + " °C<br>";
+        result += "Fahrenheit: " + fahrenheit.toFixed(2) + " °F";
+        
+        document.getElementById("result").innerHTML = result;
+    }
+</script>
+
+</body>
+</html>

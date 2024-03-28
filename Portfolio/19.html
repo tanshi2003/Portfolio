@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Square Layout</title>
+    <style>
+        .cell {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+            display: inline-block;
+        }
+
+        .black {
+            background-color: black;
+        }
+
+        .red {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div id="grid"></div>
+
+<script>
+    function createGrid(rows, columns) {
+        var grid = document.getElementById("grid");
+        grid.innerHTML = "";
+
+        for (var i = 0; i < rows; i++) {
+            for (var j = 0; j < columns; j++) {
+                var cell = document.createElement("div");
+                cell.className = (i + j) % 2 === 0 ? "cell black" : "cell red";
+                grid.appendChild(cell);
+            }
+            grid.appendChild(document.createElement("br")); // Add line break after each row
+        }
+    }
+
+    var rows = parseInt(prompt("Enter the number of rows:"));
+    var columns = parseInt(prompt("Enter the number of columns:"));
+
+    createGrid(rows, columns);
+</script>
+
+</body>
+</html>

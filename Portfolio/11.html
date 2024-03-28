@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Feedback</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <h2>User Feedback</h2>
+    <form>
+        <table>
+            <tr>
+                <th>Question</th>
+                <th>Response</th>
+            </tr>
+            <tr>
+                <td>1. How satisfied are you with the software?</td>
+                <td>
+                    <input type="radio" name="satisfaction" value="very_satisfied"> Very Satisfied<br>
+                    <input type="radio" name="satisfaction" value="satisfied"> Satisfied<br>
+                    <input type="radio" name="satisfaction" value="neutral"> Neutral<br>
+                    <input type="radio" name="satisfaction" value="dissatisfied"> Dissatisfied<br>
+                    <input type="radio" name="satisfaction" value="very_dissatisfied"> Very Dissatisfied<br>
+                </td>
+            </tr>
+            <tr>
+                <td>2. Which features do you find most useful? (Select all that apply)</td>
+                <td>
+                    <input type="checkbox" name="features" value="feature1"> Feature 1<br>
+                    <input type="checkbox" name="features" value="feature2"> Feature 2<br>
+                    <input type="checkbox" name="features" value="feature3"> Feature 3<br>
+                </td>
+            </tr>
+            <tr>
+                <td>3. How likely are you to recommend this software to others?</td>
+                <td>
+                    <select name="recommendation">
+                        <option value="very_likely">Very Likely</option>
+                        <option value="likely">Likely</option>
+                        <option value="neutral">Neutral</option>
+                        <option value="unlikely">Unlikely</option>
+                        <option value="very_unlikely">Very Unlikely</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>4. What improvements would you suggest?</td>
+                <td>
+                    <textarea name="improvements" rows="4"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>5. Additional Comments</td>
+                <td>
+                    <input type="text" name="additional_comments" placeholder="Enter your comments here">
+                </td>
+            </tr>
+        </table>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            padding: 0 20px; /* Add padding on both sides */
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card-date {
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="eventContainer"></div>
+</div>
+
+<script>
+    // Array of event objects
+    var events = [
+        {
+            image: "images/event1.jpg",
+            title: "Event 1",
+            date: "April 1, 2024",
+            description: "Description for Event 1"
+        },
+        {
+            image: "images/event2.jpg",
+            title: "Event 2",
+            date: "April 15, 2024",
+            description: "Description for Event 2"
+        },
+        {
+            image: "images/event3.jpg",
+            title: "Event 3",
+            date: "May 5, 2024",
+            description: "Description for Event 3"
+        }
+    ];
+
+    // Function to generate HTML for each event card
+    function generateEventCard(event) {
+        var cardHTML = `
+            <div class="card">
+                <img src="${event.image}" alt="${event.title}">
+                <div class="card-content">
+                    <h2 class="card-title">${event.title}</h2>
+                    <p class="card-date">${event.date}</p>
+                    <p class="card-description">${event.description}</p>
+                </div>
+            </div>
+        `;
+        return cardHTML;
+    }
+
+    // Function to display events on the webpage
+    function displayEvents() {
+        var eventContainer = document.getElementById("eventContainer");
+        var eventsHTML = "";
+
+        // Generate HTML for each event card
+        events.forEach(function(event) {
+            eventsHTML += generateEventCard(event);
+        });
+
+        // Display event cards in the event container
+        eventContainer.innerHTML = eventsHTML;
+    }
+
+    // Call the displayEvents function to show events on page load
+    displayEvents();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: linear-gradient(to bottom, #3498db, #ffffff, #8e44ad);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin-top: 100px; /* Adjust this value to lower or raise the form */
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.8em;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<form id="registrationForm" onsubmit="return validateForm()">
+    <h2>User Registration</h2>
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required>
+    <div id="firstNameError" class="error"></div>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName">
+    <div id="lastNameError" class="error"></div>
+
+    <label for="userID">Banasthali ID:</label>
+    <input type="text" id="userID" name="userID" required>
+    <div id="userIDError" class="error"></div>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <div id="passwordError" class="error"></div>
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" required>
+    <div id="confirmPasswordError" class="error"></div>
+
+    <label for="address">Address:</label>
+    <input type="text" id="address" name="address" required>
+    <div id="addressError" class="error"></div>
+
+    <label for="email">Email ID:</label>
+    <input type="email" id="email" name="email" required>
+    <div id="emailError" class="error"></div>
+
+    <label for="contactNumber">Contact Number:</label>
+    <input type="tel" id="contactNumber" name="contactNumber" required>
+    <div id="contactNumberError" class="error"></div>
+
+    <input type="submit" value="Register">
+</form>
+
+<script>
+    function validateForm() {
+        let firstName = document.getElementById('firstName').value.trim();
+        let lastName = document.getElementById('lastName').value.trim();
+        let userID = document.getElementById('userID').value.trim();
+        let password = document.getElementById('password').value;
+        let confirmPassword = document.getElementById('confirmPassword').value;
+        let address = document.getElementById('address').value.trim();
+        let email = document.getElementById('email').value.trim();
+        let contactNumber = document.getElementById('contactNumber').value.trim();
+
+        // Reset previous errors
+        let errorElements = document.getElementsByClassName('error');
+        for (let i = 0; i < errorElements.length; i++) {
+            errorElements[i].innerText = "";
+        }
+
+        let isValid = true;
+
+        if (!/^[a-zA-Z ]+$/.test(firstName)) {
+            document.getElementById('firstNameError').innerText = "Please enter a valid first name";
+            isValid = false;
+        }
+
+        if (lastName !== "" && !/^[a-zA-Z ]+$/.test(lastName)) {
+            document.getElementById('lastNameError').innerText = "Please enter a valid last name";
+            isValid = false;
+        }
+
+        if (!/^[a-zA-Z0-9]+$/.test(userID)) {
+            document.getElementById('userIDError').innerText = "Please enter a valid Banasthali ID";
+            isValid = false;
+        }
+
+        if (password.length < 6) {
+            document.getElementById('passwordError').innerText = "Password must be at least 6 characters long";
+            isValid = false;
+        }
+
+        if (password !== confirmPassword) {
+            document.getElementById('confirmPasswordError').innerText = "Passwords do not match";
+            isValid = false;
+        }
+
+        if (address === "") {
+            document.getElementById('addressError').innerText = "Please enter your address";
+            isValid = false;
+        }
+
+        if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+            document.getElementById('emailError').innerText = "Please enter a valid email address";
+            isValid = false;
+        }
+
+        if (!/^\d{10}$/.test(contactNumber)) {
+            document.getElementById('contactNumberError').innerText = "Please enter a valid 10-digit contact number";
+            isValid = false;
+        }
+
+        if (!isValid) {
+            // If form is not valid, return false to prevent submission
+            return false;
+        }
+
+    // If form is valid, clear error messages and show success message
+    for (let i = 0; i < errorElements.length; i++) {
+        errorElements[i].innerText = ""; // Clear error messages
+    }
+    alert("Your details have been submitted!");
+    return true; // Returning true to allow form submission
+}
+</script>
+
+</body>
+</html>

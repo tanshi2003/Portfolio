@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting Message</title>
+    <style>
+        #greetingMessage {
+            font-size: 20px;
+            padding: 10px;
+            background-color: lightblue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="greetingMessage"></div>
+
+<script>
+    // Function to generate a greeting message based on the time of day
+    function generateGreetingMessage() {
+        var userName = prompt("Please enter your name:");
+        var date = new Date();
+        var hours = date.getHours();
+        var greeting = "";
+
+        if (hours < 12) {
+            greeting = "Good morning";
+        } else if (hours < 18) {
+            greeting = "Good afternoon";
+        } else {
+            greeting = "Good evening";
+        }
+
+        return greeting + ", " + userName + "! Click to hide.";
+    }
+
+    // Function to display the greeting message
+    function displayGreetingMessage() {
+        var greetingMessage = document.getElementById("greetingMessage");
+        greetingMessage.textContent = generateGreetingMessage();
+
+        // Add click event listener to hide the greeting message when clicked
+        greetingMessage.addEventListener("click", function() {
+            greetingMessage.style.display = "none";
+        });
+    }
+
+    // Call the displayGreetingMessage function on page load
+    window.onload = function() {
+        displayGreetingMessage();
+    };
+</script>
+
+</body>
+</html>

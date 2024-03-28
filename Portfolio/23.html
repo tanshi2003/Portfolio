@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Animation</title>
+    <style>
+        #textDisplay {
+            color: red;
+            font-size: 10pt;
+        }
+    </style>
+</head>
+<body>
+
+<div id="textDisplay">TEXT-GROWING</div>
+
+<script>
+    var fontSize = 10;
+    var interval;
+
+    function growText() {
+        interval = setInterval(function() {
+            // Increase font size
+            fontSize++;
+
+            // Change text color to red and display "TEXT-GROWING"
+            document.getElementById("textDisplay").style.color = "red";
+            document.getElementById("textDisplay").textContent = "TEXT-GROWING";
+
+            // Set font size
+            document.getElementById("textDisplay").style.fontSize = fontSize + "pt";
+
+            // Check if font size reaches 50pt
+            if (fontSize >= 50) {
+                clearInterval(interval); // Stop increasing font size
+                shrinkText(); // Start decreasing font size
+            }
+        }, 100);
+    }
+
+    function shrinkText() {
+        interval = setInterval(function() {
+            // Decrease font size
+            fontSize--;
+
+            // Change text color to blue and display "TEXT-SHRINKING"
+            document.getElementById("textDisplay").style.color = "blue";
+            document.getElementById("textDisplay").textContent = "TEXT-SHRINKING";
+
+            // Set font size
+            document.getElementById("textDisplay").style.fontSize = fontSize + "pt";
+
+            // Check if font size reaches 5pt
+            if (fontSize <= 5) {
+                clearInterval(interval); // Stop decreasing font size
+            }
+        }, 100);
+    }
+
+    // Start the animation
+    growText();
+</script>
+
+</body>
+</html>
