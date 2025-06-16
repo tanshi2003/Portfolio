@@ -79,13 +79,14 @@ section{
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    gap: 2rem;
 }
 section .title{
     position: relative;
     text-align: center;
-    font-size: 40px;
+    font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 500;
-    margin-bottom: 60px;
+    margin-bottom: 3rem;
     padding-bottom: 20px;
     font-family: 'Ubuntu', sans-serif;
 }
@@ -158,6 +159,11 @@ section .title::after{
 .navbar.sticky .logo a,
 .navbar.sticky .logo a span {
     color: #fff;
+}
+
+.navbar .menu {
+    display: flex;
+    align-items: center;
 }
 
 .navbar .menu li {
@@ -284,6 +290,7 @@ section .title::after{
 
 .home .home-content .text-3 span {
     background: linear-gradient(135deg, #041d3d, #aef7a9, crimson);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -478,8 +485,10 @@ section .title::after{
 }
 
 .services .serv-content {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 30px;
     padding: 0 20px;
     max-width: 1200px;
@@ -496,6 +505,9 @@ section .title::after{
     overflow: hidden;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    flex: 1;
+    min-width: 300px;
+    max-width: 380px;
 }
 
 .services .serv-content .card::before {
@@ -752,15 +764,14 @@ section .title::after{
     }
     .about .about-content .right {
         flex: 100%;
+        width: 100%;
+    }
+    .services .serv-content {
+        justify-content: center;
     }
     .services .serv-content .card {
-        width: calc(50% - 10px);
-        margin-bottom: 20px;
-    }
-    .skills .skills-content .column,
-    .contact .contact-content .column {
-        width: 100%;
-        margin-bottom: 35px;
+        flex: 0 1 calc(50% - 30px);
+        min-width: 280px;
     }
 }
 
@@ -777,9 +788,9 @@ section .title::after{
     .home .home-content a {
         font-size: 20px;
     }
-    .services .serv-content .card,
-    .work {
-        width: 100%;
+    .services .serv-content .card {
+        flex: 1 1 100%;
+        margin: 0 20px;
     }
 }
 
@@ -1133,22 +1144,41 @@ section .title::after{
     color: #fff;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .work {
-        min-width: 300px;
-    }
-    
-    .proj-content {
-        padding: 20px;
-    }
+/* Base responsive adjustments */
+.max-width {
+    width: 100%;
+    padding: 0 30px;
+    margin: auto;
 }
 
-@media (max-width: 480px) {
-    .work {
-        min-width: 250px;
-    }
+.about .about-content,
+.services .serv-content,
+.skills .skills-content,
+.projects .proj-content,
+.contact .contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
 }
+
+.skills .skills-content .column,
+.contact .contact-content .column {
+    width: calc(50% - 30px);
+    margin-bottom: 30px;
+}
+
+section .title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 3rem;
+}
+
+.navbar .menu {
+    display: flex;
+    align-items: center;
+}
+
 /* ===== Contact Section Styling ===== */
 .contact {
   background-color: #0a192f;
@@ -1314,13 +1344,144 @@ textarea:focus {
   transform: scale(1.05);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .contact-content {
-    flex-direction: column;
-  }
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 1300px) {
+    .max-width {
+        padding: 0 50px;
+    }
+}
 
-  .social-menu ul {
-    justify-content: flex-start;
-  }
+@media screen and (max-width: 1104px) {
+    .about .about-content .left img {
+        width: 350px;
+        height: 350px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .max-width {
+        padding: 0 50px;
+    }
+}
+
+@media screen and (max-width: 947px) {
+    .menu-btn {
+        display: block;
+        z-index: 999;
+    }
+    .menu-btn i.active:before {
+        content: "\f00d";
+    }
+    .navbar .menu {
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        left: -100%;
+        top: 0;
+        background: rgba(17, 17, 17, 0.9);
+        text-align: center;
+        padding-top: 80px;
+        transition: all 0.3s ease;
+    }
+    .navbar .menu.active {
+        left: 0;
+    }
+    .navbar .menu li {
+        display: block;
+    }
+    .navbar .menu li a {
+        display: inline-block;
+        margin: 20px 0;
+        font-size: 25px;
+    }
+    .home .home-content .text-2 {
+        font-size: 70px;
+    }
+    .home .home-content .text-3 {
+        font-size: 35px;
+    }
+    .home .home-content a {
+        font-size: 23px;
+        padding: 10px 30px;
+    }
+    .max-width {
+        max-width: 930px;
+    }
+    .about .about-content .column {
+        width: 100%;
+    }
+    .about .about-content .left {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto 60px;
+    }
+    .about .about-content .right {
+        flex: 100%;
+        width: 100%;
+    }
+    .services .serv-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 690px) {
+    .max-width {
+        padding: 0 23px;
+    }
+    .home .home-content .text-2 {
+        font-size: 60px;
+    }
+    .home .home-content .text-3 {
+        font-size: 32px;
+    }
+    .home .home-content a {
+        font-size: 20px;
+    }
+    .services .serv-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .home .home-content .text-2 {
+        font-size: 50px;
+    }
+    .home .home-content .text-3 {
+        font-size: 27px;
+    }
+    .about .about-content .right .text,
+    .skills .skills-content .left .text {
+        font-size: 19px;
+    }
+    .contact .right form .fields {
+        flex-direction: column;
+    }
+    .contact .right form .name,
+    .contact .right form .email {
+        margin: 0;
+    }
+    .scroll-up-btn {
+        right: 15px;
+        bottom: 15px;
+        height: 38px;
+        width: 35px;
+        font-size: 23px;
+        line-height: 38px;
+    }
+}
+
+/* Additional responsive adjustments */
+@media screen and (max-width: 380px) {
+    .home .home-content .text-1 {
+        font-size: 22px;
+    }
+    .home .home-content .text-2 {
+        font-size: 40px;
+    }
+    .home .home-content .text-3 {
+        font-size: 22px;
+    }
+    .navbar .logo a {
+        font-size: 2.8rem;
+    }
 }
