@@ -56,12 +56,14 @@ const Skills = () => {
   return (
     <section className="skills" id="skills">
       <div className="work-experience-section">
+        <h1 className="title">My Skills</h1>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6 }}
-          >            <h2 className="work-exp-title">Work Experience</h2>
+          >           
+           <h2 className="work-exp-title">Work Experience</h2>
             <div className="work-exp-card">
               <h3 className="role-title">
                 <i className="fas fa-briefcase"></i>
