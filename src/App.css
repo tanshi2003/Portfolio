@@ -79,14 +79,13 @@ section{
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
 }
 section .title{
     position: relative;
     text-align: center;
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: 40px;
     font-weight: 500;
-    margin-bottom: 3rem;
+    margin-bottom: 60px;
     padding-bottom: 20px;
     font-family: 'Ubuntu', sans-serif;
 }
@@ -159,11 +158,6 @@ section .title::after{
 .navbar.sticky .logo a,
 .navbar.sticky .logo a span {
     color: #fff;
-}
-
-.navbar .menu {
-    display: flex;
-    align-items: center;
 }
 
 .navbar .menu li {
@@ -290,7 +284,6 @@ section .title::after{
 
 .home .home-content .text-3 span {
     background: linear-gradient(135deg, #041d3d, #aef7a9, crimson);
-    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -485,10 +478,8 @@ section .title::after{
 }
 
 .services .serv-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     padding: 0 20px;
     max-width: 1200px;
@@ -505,9 +496,6 @@ section .title::after{
     overflow: hidden;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    flex: 1;
-    min-width: 300px;
-    max-width: 380px;
 }
 
 .services .serv-content .card::before {
@@ -599,7 +587,7 @@ section .title::after{
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    display: flex;
+    display: grid;
     flex-direction: column;
     gap: 60px;
 }
@@ -714,29 +702,51 @@ section .title::after{
 }
 
 @media (max-width: 768px) {
+    .navbar {
+        padding: 10px 0;
+    }
+
     .navbar .menu {
         position: fixed;
         height: 100vh;
         width: 100%;
         left: -100%;
         top: 0;
-        background: #111;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        padding-top: 60px;
         text-align: center;
-        padding-top: 80px;
         transition: all 0.3s ease;
     }
+
     .navbar .menu.active {
         left: 0;
     }
+
     .navbar .menu li {
         display: block;
+        margin: 20px 0;
     }
+
     .navbar .menu li a {
         display: inline-block;
-        margin: 20px 0;
-        font-size: 25px;
-        color: #fff;
+        font-size: 20px;
+        margin: 0;
     }
+
+    .menu-btn {
+        display: block;
+        position: fixed;
+        right: 20px;
+        top: 15px;
+        z-index: 999;
+        background: transparent;
+        border: none;
+        color: #fff;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
     .home .home-content .text-2 {
         font-size: 70px;
     }
@@ -764,14 +774,15 @@ section .title::after{
     }
     .about .about-content .right {
         flex: 100%;
-        width: 100%;
-    }
-    .services .serv-content {
-        justify-content: center;
     }
     .services .serv-content .card {
-        flex: 0 1 calc(50% - 30px);
-        min-width: 280px;
+        width: calc(50% - 10px);
+        margin-bottom: 20px;
+    }
+    .skills .skills-content .column,
+    .contact .contact-content .column {
+        width: 100%;
+        margin-bottom: 35px;
     }
 }
 
@@ -788,9 +799,9 @@ section .title::after{
     .home .home-content a {
         font-size: 20px;
     }
-    .services .serv-content .card {
-        flex: 1 1 100%;
-        margin: 0 20px;
+    .services .serv-content .card,
+    .work {
+        width: 100%;
     }
 }
 
@@ -1144,41 +1155,22 @@ section .title::after{
     color: #fff;
 }
 
-/* Base responsive adjustments */
-.max-width {
-    width: 100%;
-    padding: 0 30px;
-    margin: auto;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .work {
+        min-width: 300px;
+    }
+    
+    .proj-content {
+        padding: 20px;
+    }
 }
 
-.about .about-content,
-.services .serv-content,
-.skills .skills-content,
-.projects .proj-content,
-.contact .contact-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
+@media (max-width: 480px) {
+    .work {
+        min-width: 250px;
+    }
 }
-
-.skills .skills-content .column,
-.contact .contact-content .column {
-    width: calc(50% - 30px);
-    margin-bottom: 30px;
-}
-
-section .title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    margin-bottom: 3rem;
-}
-
-.navbar .menu {
-    display: flex;
-    align-items: center;
-}
-
 /* ===== Contact Section Styling ===== */
 .contact {
   background-color: #0a192f;
@@ -1344,144 +1336,253 @@ textarea:focus {
   transform: scale(1.05);
 }
 
-/* Media Queries for Responsive Design */
-@media screen and (max-width: 1300px) {
-    .max-width {
-        padding: 0 50px;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+  }
+
+  .social-menu ul {
+    justify-content: flex-start;
+  }
+}
+
+/* Services mobile responsive styling */
+.services .serv-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+}
+
+.services .serv-content .card {
+    flex: 1 1 300px;
+    max-width: 100%;
+    min-height: 300px;
+    padding: 25px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Skills section mobile responsive styling */
+.skills-content {
+    padding: 15px;
+}
+
+.tech-stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 15px;
+}
+
+.stack-category {
+    padding: 20px;
+    background: rgba(2, 12, 27, 0.7);
+    border-radius: 12px;
+    height: 100%;
+}
+
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.skill-chip {
+    padding: 8px 12px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Mobile-specific responsive styles */
+@media (max-width: 480px) {
+    .services .serv-content .card {
+        flex: 1 1 100%;
+        margin: 10px 15px;
+        min-height: auto;
+        padding: 20px 15px;
+    }
+
+    .tech-stack-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .stack-category {
+        padding: 15px;
+    }
+
+    .category-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .skill-chip {
+        font-size: 13px;
+        padding: 6px 10px;
     }
 }
 
-@media screen and (max-width: 1104px) {
-    .about .about-content .left img {
-        width: 350px;
-        height: 350px;
+/* Additional responsive improvements */
+@media (max-width: 768px) {
+    section {
+        padding: 50px 0;
+    }
+
+    .services .title,
+    .skills .title {
+        font-size: 28px;
+        margin-bottom: 40px;
+    }
+
+    .services .title::after,
+    .skills .title::after {
+        font-size: 16px;
+    }
+
+    .services .serv-content {
+        padding: 10px;
+    }
+
+    .services .serv-content .card .text {
+        font-size: 20px;
+    }
+
+    .services .serv-content .card p {
+        font-size: 14px;
+        line-height: 1.6;
     }
 }
 
-@media screen and (max-width: 991px) {
-    .max-width {
-        padding: 0 50px;
+/* Small mobile devices */
+@media (max-width: 360px) {
+    .services .serv-content .card {
+        margin: 8px 10px;
+        padding: 15px 12px;
+    }
+
+    .services .serv-content .card .text {
+        font-size: 18px;
+    }
+
+    .skill-chip {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+
+    .category-title {
+        font-size: 18px;
     }
 }
 
-@media screen and (max-width: 947px) {
-    .menu-btn {
-        display: block;
-        z-index: 999;
+/* Fix for better readability on small screens */
+@media (max-width: 480px) {
+    .level-advanced,
+    .level-intermediate,
+    .level-beginner {
+        padding: 3px 8px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-left: 8px;
+        font-size: 11px;
     }
-    .menu-btn i.active:before {
-        content: "\f00d";
+}
+
+/* Mobile navigation improvements */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 0;
     }
+
     .navbar .menu {
         position: fixed;
         height: 100vh;
         width: 100%;
         left: -100%;
         top: 0;
-        background: rgba(17, 17, 17, 0.9);
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        padding-top: 60px;
         text-align: center;
-        padding-top: 80px;
         transition: all 0.3s ease;
     }
+
     .navbar .menu.active {
         left: 0;
     }
+
     .navbar .menu li {
         display: block;
+        margin: 20px 0;
     }
+
     .navbar .menu li a {
         display: inline-block;
-        margin: 20px 0;
-        font-size: 25px;
-    }
-    .home .home-content .text-2 {
-        font-size: 70px;
-    }
-    .home .home-content .text-3 {
-        font-size: 35px;
-    }
-    .home .home-content a {
-        font-size: 23px;
-        padding: 10px 30px;
-    }
-    .max-width {
-        max-width: 930px;
-    }
-    .about .about-content .column {
-        width: 100%;
-    }
-    .about .about-content .left {
-        display: flex;
-        justify-content: center;
-        margin: 0 auto 60px;
-    }
-    .about .about-content .right {
-        flex: 100%;
-        width: 100%;
-    }
-    .services .serv-content {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (max-width: 690px) {
-    .max-width {
-        padding: 0 23px;
-    }
-    .home .home-content .text-2 {
-        font-size: 60px;
-    }
-    .home .home-content .text-3 {
-        font-size: 32px;
-    }
-    .home .home-content a {
         font-size: 20px;
-    }
-    .services .serv-content {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .home .home-content .text-2 {
-        font-size: 50px;
-    }
-    .home .home-content .text-3 {
-        font-size: 27px;
-    }
-    .about .about-content .right .text,
-    .skills .skills-content .left .text {
-        font-size: 19px;
-    }
-    .contact .right form .fields {
-        flex-direction: column;
-    }
-    .contact .right form .name,
-    .contact .right form .email {
         margin: 0;
     }
-    .scroll-up-btn {
-        right: 15px;
-        bottom: 15px;
-        height: 38px;
-        width: 35px;
-        font-size: 23px;
-        line-height: 38px;
+
+    .menu-btn {
+        display: block;
+        position: fixed;
+        right: 20px;
+        top: 15px;
+        z-index: 999;
+        background: transparent;
+        border: none;
+        color: #fff;
+        font-size: 24px;
+        cursor: pointer;
     }
 }
 
-/* Additional responsive adjustments */
-@media screen and (max-width: 380px) {
-    .home .home-content .text-1 {
-        font-size: 22px;
+/* Mobile-first base improvements */
+.max-width {
+    padding: 0 15px;
+    margin: auto;
+}
+
+@media (min-width: 768px) {
+    .max-width {
+        padding: 0 30px;
     }
-    .home .home-content .text-2 {
-        font-size: 40px;
+}
+
+@media (min-width: 1200px) {
+    .max-width {
+        padding: 0 50px;
     }
-    .home .home-content .text-3 {
-        font-size: 22px;
+}
+
+/* General mobile responsive fixes */
+@media (max-width: 480px) {
+    section .title {
+        font-size: 24px;
+        margin-bottom: 30px;
     }
-    .navbar .logo a {
-        font-size: 2.8rem;
+
+    section .title::before {
+        width: 120px;
+    }
+
+    section .title::after {
+        font-size: 14px;
+    }
+
+    .text-1, .text-2, .text-3 {
+        text-align: center;
+    }
+
+    .services .serv-content .card,
+    .skills .stack-category {
+        margin-bottom: 20px;
     }
 }
