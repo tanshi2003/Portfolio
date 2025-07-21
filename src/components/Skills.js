@@ -1,25 +1,59 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import {
+  FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJsSquare,
+  FaGitAlt, FaPython, FaDatabase, FaCloudUploadAlt
+} from "react-icons/fa";
+import {
+  SiDjango, SiVercel, SiNetlify, SiRailway, SiXampp,
+  SiDbeaver, SiGithub, SiVscodium
+} from "react-icons/si";
 
-const SkillCard = ({ skill, index, inView }) => {
-  const levelClass = skill.level >= 85 ? 'level-advanced' : 
-                    skill.level >= 60 ? 'level-intermediate' : 'level-beginner';
-  const levelText = skill.level >= 85 ? 'Advanced' : 
-                   skill.level >= 60 ? 'Intermediate' : 'Beginner';
-                   
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="skill-chip"
-    >
-      {skill.name}
-      <span className={levelClass}>{levelText}</span>
-    </motion.div>
-  );
-};
+const categories = [
+  {
+    name: "Frontend",
+    key: "frontend",
+    techs: [
+      { name: "HTML5", icon: <FaHtml5 /> },
+      { name: "CSS3", icon: <FaCss3Alt /> },
+      { name: "JavaScript", icon: <FaJsSquare /> },
+      { name: "React.js", icon: <FaReact /> },
+    ],
+  },
+  {
+    name: "Backend",
+    key: "backend",
+    techs: [
+      { name: "Node.js", icon: <FaNodeJs /> },
+      { name: "Django", icon: <SiDjango /> },
+      { name: "Python", icon: <FaPython /> },
+      { name: "MySQL", icon: <FaDatabase /> },
+    ],
+  },
+  {
+    name: "Tools & IDEs",
+    key: "tools",
+    techs: [
+      { name: "GitHub", icon: <SiGithub /> },
+      { name: "Git", icon: <FaGitAlt /> },
+      { name: "VS Code", icon: <SiVscodium /> },
+      { name: "PyCharm", icon: <FaPython /> },
+      { name: "XAMPP", icon: <SiXampp /> },
+      { name: "DBeaver", icon: <SiDbeaver /> },
+    ],
+  },
+  {
+    name: "Hosting & Deployment",
+    key: "hosting",
+    techs: [
+      { name: "Vercel", icon: <SiVercel /> },
+      { name: "Render", icon: <FaCloudUploadAlt /> },
+      { name: "Railway", icon: <SiRailway /> },
+      { name: "Netlify", icon: <SiNetlify /> },
+    ],
+  },
+];
 
 const Skills = () => {
   const [ref, inView] = useInView({
@@ -27,128 +61,70 @@ const Skills = () => {
     triggerOnce: true,
   });
 
-  const frontendSkills = [
-    { name: 'HTML  ', level: 90 },
-    { name: 'CSS  ', level: 90 },
-    { name: 'JavaScript  ', level: 90 },
-    { name: 'React  ', level: 40 }
-  ];
-
-  const backendSkills = [
-    { name: 'Node.js  ', level: 55 },
-    { name: 'Express.js  ', level: 55 },
-    { name: 'Django  ', level: 60 },
-    { name: 'MySQL  ', level: 90 }
-  ];
-
-  const programmingSkills = [
-    { name: 'C  ', level: 95 },
-    { name: 'C++  ', level: 95 },
-    { name: 'Python  ', level: 85 }
-  ];
-
-  const toolsSkills = [
-    { name: 'Git  ', level: 85 },
-    { name: 'PyCharm  ', level: 85 },
-    { name: 'Postman  ', level: 95 },
-    { name: 'VS Code  ', level: 90 }
-  ];
   return (
     <section className="skills" id="skills">
       <div className="work-experience-section">
         <h1 className="title">My Skills</h1>
         <div className="container">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6 }}
-          >           
-           <h2 className="work-exp-title">Work Experience</h2>
-            <div className="work-exp-card">
-              <h3 className="role-title">
-                <i className="fas fa-briefcase"></i>
-                Full Stack Developer Intern
-              </h3>
-              <p className="company-name">Pedestal Techno World Pvt. Ltd.</p>
-              <p className="duration">January 2025 - June 2025</p>
-              <p className="exp-description">
-                Completed a 5-month full-stack development internship, contributing to both frontend and backend development.
-                –Worked on live projects, handled technical and operational tasks, and gained end-to-end exposure to real-world software
-                development.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      <div className="tech-stack-section">
-        <div className="container">
-          <motion.div
             ref={ref}
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6 }}
-          >            
-          <h2 className="tech-stack-title">Tech Stack</h2>
-            
-            <div className="tech-stack-grid">
-              <div className="stack-category">
-                <h2>Backend Development</h2>
-                <div className="skills-grid">
-                  {backendSkills.map((skill, index) => (
-                    <SkillCard
-                      key={skill.name}
-                      skill={skill}
-                      index={index}
-                      inView={inView}
-                    />
-                  ))}
-                </div>
+          >
+            <h2 className="work-exp-title">Professional Experience</h2>
+            <div className="work-exp-card">
+              <div className="work-exp-header">
+                <h3 className="role-title">
+                  <i className="fas fa-briefcase"></i> Full Stack Developer Intern
+                </h3>
+                <p className="company-name">Pedestal Techno World Pvt. Ltd.</p>
+                <p className="duration">Jan 2025 – Jun 2025</p>
               </div>
-
-              <div className="stack-category">
-                <h2>Frontend Development</h2>
-                <div className="skills-grid">
-                  {frontendSkills.map((skill, index) => (
-                    <SkillCard
-                      key={skill.name}
-                      skill={skill}
-                      index={index + backendSkills.length}
-                      inView={inView}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <div className="stack-category">
-                <h2>Programming Languages</h2>
-                <div className="skills-grid">
-                  {programmingSkills.map((skill, index) => (
-                    <SkillCard
-                      key={skill.name}
-                      skill={skill}
-                      index={index + backendSkills.length + frontendSkills.length}
-                      inView={inView}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <div className="stack-category">
-                <h2>Tools & Technologies</h2>
-                <div className="skills-grid">
-                  {toolsSkills.map((skill, index) => (
-                    <SkillCard
-                      key={skill.name}
-                      skill={skill}
-                      index={index + backendSkills.length + frontendSkills.length + programmingSkills.length}
-                      inView={inView}
-                    />
-                  ))}
-                </div>
-              </div>
+              <ul className="exp-description">
+                <li>
+                  Collaborated on real-world web applications using <strong>Node.js</strong> and <strong>React.js</strong>, contributing to both frontend and backend modules.
+                </li>
+                <li>
+                  Gained hands-on experience in full product cycles: requirement analysis, development, testing, deployment, and bug fixes.
+                </li>
+                <li>
+                  Worked with Git, APIs, and cloud deployment tools like <strong>Render</strong> and <strong>Netlify</strong> to deliver production-ready features.
+                </li>
+                <li>
+                  Developed strong problem-solving, communication, and team collaboration skills by working closely with senior developers and clients.
+                </li>
+              </ul>
             </div>
           </motion.div>
+        </div>
+      </div>
+      {/* Tech Stack Section */}
+      <div className="techstack-section">
+        <div className="techstack-heading">
+          <h2>Tech Stack</h2>
+        </div>
+        <div className="techstack-tabs">
+          {categories.map((cat, idx) => (
+            <button
+              key={cat.name}
+              className={`techstack-tab${ref.current && ref.current.activeTab === idx ? " active" : ""}`}
+              onClick={() => ref.current && (ref.current.activeTab = idx)}
+            >
+              {cat.name}
+            </button>
+          ))}
+        </div>
+        <div className="techstack-grid">
+          {categories[ref.current && ref.current.activeTab ? ref.current.activeTab : 0].techs.map((tech) => (
+            <div
+              key={tech.name}
+              className={`techstack-card ${categories[ref.current && ref.current.activeTab ? ref.current.activeTab : 0].key}`}
+            >
+              <div className="techstack-icon">{tech.icon}</div>
+              <div className="techstack-name">{tech.name}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

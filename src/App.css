@@ -1,3 +1,121 @@
+/* ===== TechStack Section Styling ===== */
+.techstack-section {
+  padding: 0 0 280px 0;
+  background: #f7faff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.techstack-heading {
+  position: relative;
+  top: 0;
+  z-index: 20;
+  width: 100%;
+  padding: 0 0 0.5rem 0;
+  margin-bottom: 0.2rem;
+  text-align: center;
+}
+.techstack-heading h2 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  font-family: 'Ubuntu', sans-serif;
+  color: #1e293b;
+  letter-spacing: 1px;
+}
+.techstack-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 3rem;
+}
+.techstack-tab {
+  padding: 0.8rem 2.2rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1.6rem;
+  border: 2px solid #d1d5db;
+  background: #fff;
+  color: #64748b;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+.techstack-tab.active {
+  background: #e0e7ff;
+  border-color: #2563eb;
+  color: #1e293b;
+}
+.techstack-tab:hover:not(.active) {
+  background: #f3f4f6;
+}
+.techstack-grid {
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2.5rem;
+}
+@media (min-width: 600px) {
+  .techstack-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 900px) {
+  .techstack-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  .techstack-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.techstack-card {
+  background: #f1f5f9;
+  border-radius: 2rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+}
+.techstack-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(37,99,235,0.12);
+}
+.techstack-card .techstack-icon {
+  font-size: 4.5rem;
+  margin-bottom: 1.2rem;
+  color: #2563eb;
+  transition: var(--transition-smooth);
+}
+.techstack-card .techstack-name {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #334155;
+  text-align: center;
+}
+
+/* Color overrides for categories */
+.techstack-card.frontend {
+  background: #e0e7ff;
+}
+.techstack-card.backend {
+  background: #f3f4f6;
+}
+.techstack-card.tools {
+  background: #f1f1ec;
+}
+.techstack-card.hosting {
+  background: #ede9fe;
+}
 /* import google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
 
@@ -339,13 +457,29 @@ section .title::after{
 .about .title::after {
     content: "Who I am ?";
     position: absolute;
-    bottom: -12px;
     left: 50%;
-    font-size: 18px;
+    bottom: -38px;
+    font-size: 1.5rem;
     color: #3498db;
-    padding: 5px 15px;
-    background: #ffffff;
+    background: #fff;
+    padding: 8px 32px;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 2px 12px rgba(52,152,219,0.10);
     transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    letter-spacing: 1px;
+    font-family: 'Ubuntu', sans-serif;
+    width: max-content;
+    min-width: 220px;
+    text-align: center;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border-bottom: 4px solid #3498db;
 }
 
 .about .about-content {
@@ -468,13 +602,29 @@ section .title::after{
 .services .title::after {
     content: "What I provide ?";
     position: absolute;
-    bottom: -20px;
     left: 50%;
-    font-size: 18px;
+    bottom: -38px;
+    font-size: 1.5rem;
     color: #3498db;
-    padding: 5px 15px;
-    background: #fcfafa;
+    background: #1a1a1a;
+    padding: 8px 32px;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 2px 12px rgba(52,152,219,0.10);
     transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    letter-spacing: 1px;
+    font-family: 'Ubuntu', sans-serif;
+    width: max-content;
+    min-width: 220px;
+    text-align: center;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border-bottom: 4px solid #3498db;
 }
 
 .services .serv-content {
@@ -556,7 +706,7 @@ section .title::after{
 /* Skills section styling */
 .skills {
     padding: 90px 0;
-    background: #0a192f;
+
     color: #fff;
     min-height: 100vh;
     position: relative;
@@ -564,34 +714,56 @@ section .title::after{
 }
 
 .skills .title {
-    font-size: 32px;
-    color: #ffffff;
+    font-size: 2.2rem;
+    color: #131212;
     margin-bottom: 40px;
     text-align: center;
     position: relative;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+}
+.skills .title::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 180px;
+    height: 3px;
+    background: #080808;
+    transform: translateX(-50%);
 }
 .skills .title::after {
     content: "What I know ?";
     position: absolute;
-    bottom: -12px;
     left: 50%;
-    font-size: 18px;
+    bottom: -38px;
+    font-size: 1.5rem;
     color: #3498db;
-    padding: 5px 15px;
-    background: #ffffff;
+    background: #0a192f;
+    padding: 8px 32px;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 2px 12px rgba(52,152,219,0.10);
     transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    letter-spacing: 1px;
+    font-family: 'Ubuntu', sans-serif;
+    width: max-content;
+    min-width: 220px;
+    text-align: center;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border-bottom: 4px solid #3498db;
 }
 
 .main-container {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-.skills {
-    background: #0a192f;
-    min-height: 100vh;
-    padding: 50px 0;
 }
 
 .skills-content {
@@ -608,19 +780,6 @@ section .title::after{
     top: 100px;
 }
 
-.tech-stack-section {
-    background: rgba(10, 25, 47, 0.95);
-    padding: 5px 0;
-}
-
-.tech-stack-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
 
 .skill-card {
     background: rgba(2, 12, 27, 0.7);
@@ -645,23 +804,8 @@ section .title::after{
     font-weight: 500;
 }
 
-@media (max-width: 1000px) {
-    .tech-stack-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 900px) {
-    .tech-stack-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 @media (max-width: 600px) {
-    .tech-stack-grid {
-        grid-template-columns: 1fr;
-    }
-    
+
     .section-title {
         font-size: 32px;
     }
@@ -854,17 +998,13 @@ section .title::after{
     .left-section {
         position: static;
     }
-    
-    .tech-stack-section {
-        padding-left: 0;
-    }
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .skill-categories {
         grid-template-columns: 1fr;
-    }
-    
+    } */
+/*     
     .experience-card {
         flex-direction: column;
         align-items: center;
@@ -935,99 +1075,104 @@ section .title::after{
     line-height: 1.7;
     font-size: 16px;
     text-align: left;
+} */
+/* Work Experience Section Styling */
+/* Work Experience Section Styling - Improved for mobile and readability */
+.work-experience-section {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 70px 0 0 0;
+  background: #f7faff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Tech Stack Section */
-.tech-stack-section {
-    padding: 80px 0;
-    background: rgba(10, 25, 47, 0.95);
+.work-exp-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.10);
+  padding: 2.5rem 2.5rem;
+  margin: 2.5rem auto;
+  max-width: 800px;
+  width: 100%;
+  border: none;
+  transition: box-shadow 0.3s;
+}
+.work-exp-card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+}
+.work-exp-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.role-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.company-name {
+  font-size: 1.2rem;
+  color: var(--accent-color);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.duration {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.2rem;
+  font-style: italic;
+}
+.exp-description {
+  margin-top: 1.2rem;
+  padding-left: 1.7rem;
+  color: var(--text-primary);
+  font-size: 1.15rem;
+  line-height: 1.8;
+}
+.exp-description li {
+  margin-bottom: 1rem;
 }
 
-.tech-stack-title {
-    color: #64ffda;
-    font-size: 42px;
-    margin-bottom: 50px;
-    text-align: center;
+@media (max-width: 600px) {
+  .work-experience-section {
+    padding: 40px 0 20px 0;
+  }
+  .work-exp-card {
+    padding: 1.5rem 0.7rem;
+    max-width: 98vw;
+    margin: 1.2rem auto;
+  }
+  .work-exp-title {
+    font-size: 1.7rem;
+  }
+  .role-title {
+    font-size: 1.15rem;
+  }
+  .company-name {
+    font-size: 1.05rem;
+  }
+  .duration {
+    font-size: 1rem;
+  }
+  .exp-description {
+    font-size: 1.05rem;
+    padding-left: 0.7rem;
+  }
 }
-
-.tech-stack-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.stack-category {
-    background: rgba(2, 12, 27, 0.7);
-    border-radius: 12px;
-    padding: 25px;
-    text-align: center;
-}
-
-.category-title {
-    color: white;
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.category-title i {
-    font-size: 18px;
-}
-
-.skills-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.skill-chip {
-    background: rgba(100, 255, 218, 0.1);
-    border-radius: 0px;
-    padding: 8px 15px;
-    color: #ccd6f6;
-    font-size: 14px;
-    font-weight: 500;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.skill-chip:hover {
-    transform: translateY(-2px);
-    background: rgba(100, 255, 218, 0.2);
-}
-
-.level-advanced {
-    background: rgba(0, 255, 0, 0.1);
-    color: #00ff00;
-}
-
-.level-intermediate {
-    background: rgba(0, 255, 255, 0.1);
-    color: #00ffff;
-}
-
-.level-beginner {
-    background: rgba(255, 0, 0, 0.1);
-    color: #ff0000;
-}
-
 @media (max-width: 768px) {
     .work-exp-card {
         margin: 0 20px;
     }
-    
-    .tech-stack-grid {
-        grid-template-columns: repeat(2, 1fr);
-        padding: 0 20px;
-    }
-    
-    .work-exp-title,
-    .tech-stack-title {
-        font-size: 36px;
-    }
+        .work-exp-title,
     
     .role-title {
         font-size: 24px;
@@ -1041,9 +1186,31 @@ section .title::after{
   padding: 60px 0;
 }
 .projects .title::after {
-  background: #f1f1f1;
-  color: #3498db;
-  content: "What I Did ?";
+    content: "What I Did ?";
+    position: absolute;
+    left: 50%;
+    bottom: -38px;
+    font-size: 1.5rem;
+    color: #3498db;
+    background: #150a29;
+    padding: 8px 32px;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 2px 12px rgba(52,152,219,0.10);
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    letter-spacing: 1px;
+    font-family: 'Ubuntu', sans-serif;
+    width: max-content;
+    min-width: 220px;
+    text-align: center;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border-bottom: 4px solid #3498db;
 }
 
 .projects .max-width {
@@ -1385,13 +1552,6 @@ textarea:focus {
     padding: 15px;
 }
 
-.tech-stack-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    padding: 15px;
-}
-
 .stack-category {
     padding: 20px;
     background: rgba(2, 12, 27, 0.7);
@@ -1420,12 +1580,6 @@ textarea:focus {
         margin: 10px 15px;
         min-height: auto;
         padding: 20px 15px;
-    }
-
-    .tech-stack-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 10px;
     }
 
     .stack-category {
@@ -1576,23 +1730,34 @@ textarea:focus {
 
 /* General mobile responsive fixes */
 @media (max-width: 480px) {
+    html, body {
+        width: 100vw;
+        max-width: 100vw;
+        overflow-x: hidden;
+        position: relative;
+    }
+    .navbar {
+        padding: 10px 0;
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        z-index: 999;
+    }
     section .title {
         font-size: 24px;
         margin-bottom: 30px;
     }
-
     section .title::before {
         width: 120px;
     }
-
     section .title::after {
         font-size: 14px;
     }
-
     .text-1, .text-2, .text-3 {
         text-align: center;
     }
-
     .services .serv-content .card,
     .skills .stack-category {
         margin-bottom: 20px;
