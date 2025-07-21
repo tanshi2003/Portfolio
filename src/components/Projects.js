@@ -38,7 +38,7 @@ const Projects = () => {
       image: '/images/work-7.png',
       title: 'Hotel Management System',
       description: 'Django app for managing bookings, staff & rooms.',
-      link: 'https://github.com/tanshi2003/hotel-management-system.git',
+      link: 'https://hotel-management-system-k8f0.onrender.com/',
     },
     {
       image: '/images/work-8.png',
