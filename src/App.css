@@ -117,7 +117,7 @@
   background: #ede9fe;
 }
 /* import google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&family=Dancing+Script:wght@700&display=swap');
 
 :root {
     --primary-color: #2563eb;
@@ -145,6 +145,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 62.5%;
+    overflow-x: hidden;
 }
 
 body {
@@ -156,6 +157,7 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     font-size: 1.6rem;
+    overflow-x: hidden;
 }
 
 /* custom scroll bar */
@@ -237,7 +239,7 @@ section .title::after{
 .navbar {
     position: fixed;
     width: 100%;
-    z-index: 999;
+    z-index: 2000; /* Ensure navbar is above everything */
     padding: 1.2rem 0;
     font-family: 'Ubuntu', sans-serif;
     transition: all 0.3s ease;
@@ -363,7 +365,6 @@ section .title::after{
 /* home section styling */
 .home {
     display: flex;
-    padding-top: 100px;
     color: #f9f9f9;
     min-height: 500px;
     background-size: cover;
@@ -371,8 +372,15 @@ section .title::after{
     font-family: 'Ubuntu', sans-serif;
     position: relative;
     height: 100vh;
-    background-image: url('../public/images/bg1.jpg');
     background-position: center;
+    z-index: 1; /* Lower than navbar */
+    overflow-x: hidden;
+}
+
+.home .max-width {
+    width: 100%;
+    display: flex;
+    padding-top: 70px; /* Offset for navbar height, only for content */
 }
 
 .home .max-width {
@@ -393,6 +401,8 @@ section .title::after{
     font-size: 75px;
     font-weight: 600;
     margin-left: -3px;
+    font-family: 'Dancing Script', cursive, 'Poppins', sans-serif;
+    letter-spacing: 1px;
 }
 
 .home .home-content .text-3 {
@@ -403,6 +413,7 @@ section .title::after{
 .home .home-content .text-3 span {
     background: linear-gradient(135deg, #041d3d, #aef7a9, crimson);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -904,9 +915,12 @@ section .title::after{
 
     .home .home-content .text-2 {
         font-size: 70px;
+        font-family: 'Dancing Script', cursive, 'Poppins', sans-serif;
+        text-align: left;
     }
     .home .home-content .text-3 {
         font-size: 35px;
+        text-align: left;
     }
     .home .home-content a {
         font-size: 23px;
@@ -942,14 +956,19 @@ section .title::after{
 }
 
 @media (max-width: 690px) {
-    .max-width {
-        padding: 0 23px;
+    .home .home-content .text-1 {
+        font-size: 32px;
+        text-align: left;
     }
+
     .home .home-content .text-2 {
         font-size: 60px;
+        font-family: 'Dancing Script', cursive, 'Poppins', sans-serif;
+        text-align: left;
     }
     .home .home-content .text-3 {
         font-size: 32px;
+        text-align: left;
     }
     .home .home-content a {
         font-size: 20px;
@@ -963,9 +982,12 @@ section .title::after{
 @media (max-width: 500px) {
     .home .home-content .text-2 {
         font-size: 50px;
+        font-family: 'Dancing Script', cursive, 'Poppins', sans-serif;
+        text-align: left;
     }
     .home .home-content .text-3 {
         font-size: 27px;
+        text-align: left;
     }
     .about .about-content .right .text,
     .skills .skills-content .left .text {
@@ -999,85 +1021,8 @@ section .title::after{
         position: static;
     }
 }
-
-/* @media (max-width: 768px) {
-    .skill-categories {
-        grid-template-columns: 1fr;
-    } */
-/*     
-    .experience-card {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .experience-content {
-        text-align: center;
-    }
-    
-    .experience-content .date {
-        justify-content: center;
-    }
-}
-
-.work-exp-section {
-    padding: 80px 0;
-    margin-bottom: 40px;
-}
-
-.work-exp-card {
-    max-width: 800px;
-    margin: 0 auto;
-    background: rgba(2, 12, 27, 0.7);
-    border-radius: 12px;
-    padding: 35px;
-    border: 1px solid rgba(100, 255, 218, 0.1);
-    box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
-}
-
-.work-exp-title {
-    color: #64ffda;
-    font-size: 42px;
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-.role-title {
-    font-size: 28px;
-    color: #ccd6f6;
-    margin-bottom: 15px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.role-title i {
-    color: #64ffda;
-    font-size: 24px;
-}
-
-.company-name {
-    color: #64ffda;
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.duration {
-    color: #8892b0;
-    font-size: 16px;
-    margin-bottom: 20px;
-    font-style: italic;
-}
-
-.exp-description {
-    color: #8892b0;
-    line-height: 1.7;
-    font-size: 16px;
-    text-align: left;
-} */
 /* Work Experience Section Styling */
-/* Work Experience Section Styling - Improved for mobile and readability */
+
 .work-experience-section {
   width: 100%;
   box-sizing: border-box;
@@ -1094,10 +1039,12 @@ section .title::after{
   box-shadow: 0 6px 32px rgba(0,0,0,0.10);
   padding: 2.5rem 2.5rem;
   margin: 2.5rem auto;
-  max-width: 800px;
-  width: 100%;
+  max-width: 1000px;
+  height: fit-content;
+  width: 95vw;
   border: none;
   transition: box-shadow 0.3s;
+  overflow-x: auto;
 }
 .work-exp-card:hover {
   box-shadow: 0 12px 40px rgba(0,0,0,0.18);
@@ -1133,13 +1080,12 @@ section .title::after{
 }
 .exp-description {
   margin-top: 1.2rem;
-  padding-left: 1.7rem;
+  padding-left: 0.5rem;
   color: var(--text-primary);
   font-size: 1.15rem;
   line-height: 1.8;
-}
-.exp-description li {
-  margin-bottom: 1rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 @media (max-width: 600px) {

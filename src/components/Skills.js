@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
@@ -60,6 +60,7 @@ const Skills = () => {
     threshold: 0.1,
     triggerOnce: true,
   });
+  const [activeTab, setActiveTab] = useState(0);
 
   return (
     <section className="skills" id="skills">
@@ -108,18 +109,18 @@ const Skills = () => {
           {categories.map((cat, idx) => (
             <button
               key={cat.name}
-              className={`techstack-tab${ref.current && ref.current.activeTab === idx ? " active" : ""}`}
-              onClick={() => ref.current && (ref.current.activeTab = idx)}
+              className={`techstack-tab${activeTab === idx ? " active" : ""}`}
+              onClick={() => setActiveTab(idx)}
             >
               {cat.name}
             </button>
           ))}
         </div>
         <div className="techstack-grid">
-          {categories[ref.current && ref.current.activeTab ? ref.current.activeTab : 0].techs.map((tech) => (
+          {categories[activeTab].techs.map((tech) => (
             <div
               key={tech.name}
-              className={`techstack-card ${categories[ref.current && ref.current.activeTab ? ref.current.activeTab : 0].key}`}
+              className={`techstack-card ${categories[activeTab].key}`}
             >
               <div className="techstack-icon">{tech.icon}</div>
               <div className="techstack-name">{tech.name}</div>
