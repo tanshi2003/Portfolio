@@ -7,7 +7,7 @@ import {
 } from "react-icons/fa";
 import {
   SiDjango, SiVercel, SiNetlify, SiRailway, SiXampp,
-  SiDbeaver, SiGithub, SiVscodium
+  SiDbeaver, SiGithub, SiVscodium, SiNextdotjs
 } from "react-icons/si";
 
 const categories = [
@@ -19,6 +19,7 @@ const categories = [
       { name: "CSS3", icon: <FaCss3Alt /> },
       { name: "JavaScript", icon: <FaJsSquare /> },
       { name: "React.js", icon: <FaReact /> },
+      { name: "Next.js", icon: <SiNextdotjs /> },
     ],
   },
   {

@@ -54,6 +54,13 @@ const Projects = () => {
       github: 'https://github.com/tanshi2003/telecrm_db',
       demo: 'https://telecrmio.netlify.app/',
     },
+    {
+      image: '/images/work-10.png',
+      title: 'My Music',
+      description: 'An elegant web app to play and manage your favorite music with a sleek “Now Playing” view.',
+      github: 'https://github.com/tanshi2003/My-Music',
+      demo: 'https://mymusictk.netlify.app/',
+    },
   ];
 
   return (
