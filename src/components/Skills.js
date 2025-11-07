@@ -8,11 +8,20 @@ import {
 } from "react-icons/fa";
 import {
   SiDjango, SiVercel, SiNetlify, SiRailway, SiXampp,
-  SiDbeaver, SiGithub, SiVscodium, SiNextdotjs,
-  SiScikitlearn, SiStreamlit, SiPlotly
+  SiDbeaver, SiGithub, SiVscodium, SiNextdotjs,SiExpress,
+  SiScikitlearn, SiStreamlit, SiPlotly, SiCplusplus
 } from "react-icons/si";
 
 const categories = [
+  {
+    name: "Programming Languages",
+    key: "languages",
+    techs: [
+      { name: "C++", icon: <SiCplusplus /> },
+      { name: "Python", icon: <FaPython /> },
+      { name: "JavaScript", icon: <FaJsSquare /> },
+    ],
+  },
   {
     name: "AI & ML",
     key: "aiml",
@@ -40,6 +49,7 @@ const categories = [
     key: "backend",
     techs: [
       { name: "Node.js", icon: <FaNodeJs /> },
+      { name: "Express.js", icon: <SiExpress /> },
       { name: "Django", icon: <SiDjango /> },
       { name: "Python", icon: <FaPython /> },
       { name: "MySQL", icon: <FaDatabase /> },
