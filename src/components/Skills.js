@@ -3,14 +3,27 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
   FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJsSquare,
-  FaGitAlt, FaPython, FaDatabase, FaCloudUploadAlt
+  FaGitAlt, FaPython, FaDatabase, FaCloudUploadAlt,
+  FaRobot, FaBrain
 } from "react-icons/fa";
 import {
   SiDjango, SiVercel, SiNetlify, SiRailway, SiXampp,
-  SiDbeaver, SiGithub, SiVscodium, SiNextdotjs
+  SiDbeaver, SiGithub, SiVscodium, SiNextdotjs,
+  SiScikitlearn, SiStreamlit, SiPlotly
 } from "react-icons/si";
 
 const categories = [
+  {
+    name: "AI & ML",
+    key: "aiml",
+    techs: [
+      { name: "NLP – spaCy, NLTK", icon: <FaBrain /> },
+      { name: "Machine Learning", icon: <SiScikitlearn /> },
+      { name: "Generative AI", icon: <FaRobot /> },
+      { name: "AI Apps", icon: <SiStreamlit /> },
+      { name: "Data Visualization", icon: <SiPlotly /> },
+    ],
+  },
   {
     name: "Frontend",
     key: "frontend",
