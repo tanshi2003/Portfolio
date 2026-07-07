@@ -53,7 +53,7 @@ const Contact = () => {
                             <ul>
                                 <li><a href="https://github.com/tanshi2003"><FontAwesomeIcon icon={faGithub} /></a></li>
                                 <li><a href="https://www.linkedin.com/in/tanshi-khandelwal-30a1b8209"><FontAwesomeIcon icon={faLinkedinIn} /></a></li>
-                                <li><a href="https://www.instagram.com/_khandelwaltanshi_"><FontAwesomeIcon icon={faInstagram} /></a></li>
+                                <li><a href="https://www.instagram.com/_itstan.shi_/"><FontAwesomeIcon icon={faInstagram} /></a></li>
                                 <li><a href="https://twitter.com/Tanshi_03"><FontAwesomeIcon icon={faTwitter} /></a></li>
                             </ul>
                         </div>
