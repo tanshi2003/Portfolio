@@ -48,7 +48,7 @@ const Home = () => {
                     <div className="text-1">Hello, my name is</div>
                     <div className="text-2">Tanshi Khandelwal</div>
                     <div className="text-3">And I'm a <span className="typing" ref={typedRef}></span></div>
-                    <a href="mailto:info@example.com">Hire me</a>
+                    <a href="mailto:tanshikhandelwal03@gmail.com">Hire me</a>
                 </div>
             </div>
         </section>
